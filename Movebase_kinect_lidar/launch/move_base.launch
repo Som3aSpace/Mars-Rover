@@ -1,0 +1,23 @@
+<launch>
+
+   <remap from="map" to="/rtabmap/proj_map" />  
+
+   <node pkg="move_base" type="move_base" respawn="false" name="move_base" output="screen">
+  <!--  <param name="controller_frequency" value="10.0"/> 
+    <param name="controller_patiente" value="15.0"/> -->
+    <remap from="cmd_vel" to="/mobility_base/cmd_vel" />
+    <remap from="odom" to="/odometry/filtered" />
+    <remap from="odom" to="/rtabmap/odom"/>
+
+    <rosparam file="$(find my_learning)/param/costmap_common_params.yaml" command="load" ns="global_costmap" /> 
+    <rosparam file="$(find my_learning)/param/costmap_common_params.yaml" command="load" ns="local_costmap" />
+    <rosparam file="$(find my_learning)/param/local_costmap_params.yaml" command="load" />
+    <rosparam file="$(find my_learning)/param/global_costmap_params.yaml" command="load" /> 
+    <rosparam file="$(find my_learning)/param/base_local_planner_params.yaml" command="load" />
+    <param name="base_global_planner" type="string" value="navfn/NavfnROS" />
+
+    <!--<remap from="odom" to="/rtabmap/odom"/>-->
+
+ </node>
+
+</launch> 

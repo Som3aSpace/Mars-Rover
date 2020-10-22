@@ -1,0 +1,7 @@
+global_frame: odom
+rolling_window: false
+track_unknown_space: true
+
+plugins:
+  - {name: static_layer, type: "rtabmap_ros::StaticLayer"}
+  - {name: inflation_layer, type: "costmap_2d::InflationLayer"}

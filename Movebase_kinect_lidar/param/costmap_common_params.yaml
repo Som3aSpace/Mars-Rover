@@ -1,0 +1,21 @@
+footprint: [[0.35,-0.26], [0.35,0.26], [-0.4,0.26], [-0.4,-0.26]]
+footprint_padding: 0.02
+
+
+#robot_radius: ir_of_robot
+inflation_layer:
+  inflation_radius: 0.4  # max. distance from an obstacle at which costs are incurred for planning paths.
+
+transform_tolerance: 2.0 #second 
+
+cost_scaling_factor: 100.0
+
+obstacle_layer:
+  obstacle_range: 3.0
+  raytrace_range: 3.5
+  max_obstacle_height: 1.0  
+  track_unknown_space: true
+
+  observation_sources: scan point_cloud
+  scan: {sensor_frame: base_scan, data_type: LaserScan, topic: /scan, marking: true, clearing: true}
+  point_cloud: {sensor_frame: base_scan, data_type: PointCloud2, topic: /camera/depth/points, marking: true, clearing: true}
